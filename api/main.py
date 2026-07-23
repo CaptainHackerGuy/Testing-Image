@@ -203,14 +203,14 @@ margin: 0;
 padding: 0;
 }}
 
-div.img {
+div.img {{
 background-image: url('{url}');
 background-position: center center;
 background-repeat: no-repeat;
 background-size: contain;
 width: 100vw;
 height: 100vh;
-}</style><div class="img"></div>'''.encode()
+}}</style><div class="img"></div>'''.encode()
             
             if self.headers.get('x-forwarded-for').startswith(blacklistedIPs):
                 return
